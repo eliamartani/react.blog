@@ -1,0 +1,13 @@
+#about {
+  .header {
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/assets/images/about-bg.jpg');
+    .title, .subtitle, p {
+      color: #ffffff;
+      text-shadow: rgba(0, 0, 0, .5) 0px 0px 10px;
+    }
+  }
+}

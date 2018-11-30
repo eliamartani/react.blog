@@ -1,0 +1,11 @@
+{
+  "api": {
+    "url": {
+      "posts": "http://localhost:8080/blog"
+    }
+  },
+  "blog": {
+    "title": "React.Blog",
+    "subtitle": "A Front End project developed using React"
+  }
+}

@@ -1,0 +1,15 @@
+#post {
+  .header {
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .subtitle {
+      margin-bottom: 0;
+    }
+    .title, .subtitle, p {
+      color: #ffffff;
+      text-shadow: rgba(0, 0, 0, .5) 0px 0px 10px;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+#list {
+  $color: #3e4e65;
+  .article {
+    border-radius: 6px;
+    margin-top: 4rem;
+    padding-top: 2rem;
+  }
+  .author-image {
+    border: 2px solid #cccccc;
+    border-radius: 50%;
+    height: 60px;
+    left: 50%;
+    margin-left: -30px;
+    position: absolute;
+    top: -30px;
+    width: 60px;
+  }
+  .date-and-author {
+    color: #828282;
+  }
+  .header {
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/assets/images/home-bg.jpg');
+    .title, .subtitle, p {
+      color: #ffffff;
+      text-shadow: rgba(0, 0, 0, .5) 0px 0px 10px;
+    }
+  }
+  .post-title {
+    margin-bottom: 0.5rem;
+    a {
+      color: $color;
+      transition: color .1s;
+      &:hover {
+        color: darken($color, 30);
+      }
+    }
+  }
+  .read-more {
+    color: $color;
+    transition: color .1s;
+    &:hover {
+      color: darken($color, 30);
+      text-decoration: underline;
+    }
+  }
+}

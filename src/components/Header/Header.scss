@@ -1,0 +1,22 @@
+#header {
+  background-color: rgba(62, 78, 101, 0.8);
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  .navbar,
+  .navbar-menu {
+    background-color: transparent;
+    .navbar-burger,
+    .navbar-item {
+      color: #ffffff;
+    }
+    .navbar-item {
+      transition: all .2s;
+      &:hover,
+      &.is-active {
+        background-color: lighten(#3e4e65, 15);
+      }
+    }
+  }
+}
