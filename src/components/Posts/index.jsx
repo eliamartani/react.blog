@@ -19,12 +19,45 @@ export class Posts extends React.Component {
       },
       posts: []
     }
+
+    this.inifiniteScroll = this.inifiniteScroll.bind(this)
   }
 
   componentDidMount () {
+    this.requestPosts(this.state.api)
+
+    window.addEventListener('scroll', this.inifiniteScroll)
+  }
+
+  inifiniteScroll () {
+    const isBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight
+    if (isBottom) {
+      let api = this.state.api
+
+      api.index++
+
+      this.setState({ api })
+
+      this.requestPosts(api)
+    }
+  }
+
+  requestPosts (api) {
     axios
-      .get(this.state.api.url)
-      .then(response => this.setState({ posts: response.data.data }))
+      .get(`${api.url}/${api.length}/${api.index}`)
+      .then(response => {
+        const posts = this.state.posts
+        const data = response.data.data
+
+        if (data) {
+          posts.push(...data)
+        } else {
+          // reached the last page
+          window.removeEventListener('scroll', this.inifiniteScroll)
+        }
+
+        this.setState({ posts: posts })
+      })
       .catch(err => window.console.error(err))
   }
 
