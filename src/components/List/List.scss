@@ -15,6 +15,12 @@
     top: -30px;
     width: 60px;
   }
+  .card {
+    transition: all .4s;
+    &:hover {
+      box-shadow: 0 0 30px 0px #cccccc;
+    }
+  }
   .date-and-author {
     color: #828282;
   }

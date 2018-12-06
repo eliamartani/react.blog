@@ -80,7 +80,7 @@ export class Posts extends React.Component {
                     </Title>
                     <p>
                       <small className='date-and-author'>
-                        <span className='date'>{ moment(item.datepublished).format('L') }</span> by <span className='author'>{ item.author }</span>
+                        { this.renderDatePublished(item) } by { this.renderAuthor(item) } - { this.renderCategory(item) }
                       </small>
                     </p>
                   </MediaContent>
@@ -98,6 +98,24 @@ export class Posts extends React.Component {
           )
         })}
       </div>
+    )
+  }
+
+  renderAuthor (item) {
+    return (
+      <span className='author'>{ item.author }</span>
+    )
+  }
+
+  renderCategory (item) {
+    return (
+      <span className='category'>{ item.categorytitle }</span>
+    )
+  }
+
+  renderDatePublished (item) {
+    return (
+      <span className='date'>{ moment(item.datepublished).format('L') }</span>
     )
   }
 }

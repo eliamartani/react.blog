@@ -3,8 +3,9 @@ import * as React from 'react'
 
 // vendors
 import axios from 'axios'
-import { Container, Hero, HeroBody, Section, Subtitle, Title } from 'bloomer'
+import { Breadcrumb, BreadcrumbItem, Container, Hero, HeroBody, Section, Subtitle, Tag, Title } from 'bloomer'
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 // json
 import settings from '../../data/settings.json'
@@ -31,31 +32,77 @@ export class Post extends React.Component {
 
   render () {
     const post = this.state.post
-    const style = {}
-
-    style.backgroundImage = `url(${post.imageurl})`
-
-    console.log(style)
+    const styleHero = {
+      backgroundImage: `url(${post.imageurl})`
+    }
 
     return (
       <div id='post'>
-        <Hero isBold isSize='medium' className='header' style={style}>
+        <Hero isBold isSize='medium' className='header' style={styleHero}>
           <HeroBody>
             <Container hasTextAlign='centered'>
               <Title >{post.title}</Title>
               <Subtitle>{post.description}</Subtitle>
               <p>
-                <span className='date'>{ moment(post.datepublished).format('LL') }</span> by <span className='author'>{ post.author }</span>
+                { this.renderDatePublished(post) } by { this.renderAuthor(post) }
               </p>
             </Container>
           </HeroBody>
         </Hero>
         <Section>
           <Container>
-            {post.content}
+            <Breadcrumb>
+              <ul>
+                <BreadcrumbItem>
+                  <Link to='/'>Home</Link>
+                </BreadcrumbItem>
+                <BreadcrumbItem>
+                  <Link to={`/post/category/${post.categoryurl}`}>{post.categorytitle}</Link>
+                </BreadcrumbItem>
+                <BreadcrumbItem isActive>
+                  <a href='javascript:;'>{post.title}</a>
+                </BreadcrumbItem>
+              </ul>
+            </Breadcrumb>
+            <div>
+              {post.content}
+            </div>
+            <div>
+              {this.renderTags(post)}
+            </div>
           </Container>
         </Section>
       </div>
+    )
+  }
+
+  renderAuthor (item) {
+    return (
+      <span className='author'>{ item.author }</span>
+    )
+  }
+
+  renderCategory (item) {
+    return (
+      <span className='category'>{ item.categorytitle }</span>
+    )
+  }
+
+  renderDatePublished (item) {
+    return (
+      <span className='date'>{ moment(item.datepublished).format('LL') }</span>
+    )
+  }
+
+  renderTags (post) {
+    return (
+      (post.tags || '').split(',').map(tag => {
+        return (
+          <Tag isColor='light'>
+            <Link to={`/post/tag/${tag}`}>{tag}</Link>
+          </Tag>
+        )
+      })
     )
   }
 }
