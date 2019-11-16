@@ -4,6 +4,8 @@ Front End project to interact with my other Blog project running in `Go`.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+`updated`: I admit it have a lack of maintenance. I'll do it some day.
+
 ## Scripts
 
 Runs the app in the development mode:
